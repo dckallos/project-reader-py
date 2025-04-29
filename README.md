@@ -152,6 +152,196 @@ The project follows a modular architecture with clear separation of concerns:
 pytest
 ```
 
+## Command Guide
+
+This section provides a comprehensive guide to using the Project Reader MCP tools with Cline.
+
+### list_files
+
+Lists files in a directory while respecting `.gitignore` patterns.
+
+**Parameters:**
+- `directory` (required): The directory to list files from
+- `recursive` (optional, default: false): Whether to list files recursively
+- `include_hidden` (optional, default: false): Whether to include hidden files
+- `respect_gitignore` (optional, default: true): Whether to respect .gitignore patterns
+- `file_extensions` (optional): List of file extensions to include (e.g., ["py", "txt"])
+- `max_depth` (optional, default: -1): Maximum recursion depth (-1 for unlimited)
+
+**Example Cline Prompts:**
+```
+List all Python files in the src directory
+List all JavaScript files in this project that are not in node_modules
+Show me all markdown files in the docs directory
+```
+
+### read_file
+
+Reads the contents of a file.
+
+**Parameters:**
+- `file_path` (required): The path of the file to read
+- `binary` (optional, default: false): Whether to read the file as binary
+
+**Example Cline Prompts:**
+```
+Show me the contents of package.json
+Read the main configuration file
+What's in the .gitignore file?
+```
+
+### search_files
+
+Searches for a pattern in files.
+
+**Parameters:**
+- `directory` (optional, default: current directory): The directory to search in
+- `pattern` (required): The pattern to search for
+- `file_extensions` (optional): List of file extensions to include
+- `recursive` (optional, default: true): Whether to search recursively
+- `include_hidden` (optional, default: false): Whether to include hidden files
+- `respect_gitignore` (optional, default: true): Whether to respect .gitignore patterns
+- `context_lines` (optional, default: 2): Number of context lines to include
+- `max_results` (optional, default: 1000): Maximum number of results to return
+
+**Example Cline Prompts:**
+```
+Find all occurrences of "TODO" in the codebase
+Search for "api.call" in JavaScript files
+Look for deprecated function usage in the src directory
+```
+
+### extract_definitions
+
+Extracts code definitions from files.
+
+**Parameters:**
+- `file_path` (optional): The path of the file to extract definitions from
+- `directory` (optional): The directory to extract definitions from
+- `recursive` (optional, default: false): Whether to extract definitions recursively
+- `include_hidden` (optional, default: false): Whether to include hidden files
+- `respect_gitignore` (optional, default: true): Whether to respect .gitignore patterns
+- `file_extensions` (optional): List of file extensions to include
+
+**Example Cline Prompts:**
+```
+Show me all function definitions in app.js
+Extract all class definitions from the src directory
+What are the exported functions in the utils module?
+```
+
+### file_history
+
+Gets the Git history of a file.
+
+**Parameters:**
+- `file_path` (required): The path of the file to get history for
+- `max_commits` (optional, default: 10): Maximum number of commits to return
+- `include_content_diff` (optional, default: false): Whether to include content diffs
+
+**Example Cline Prompts:**
+```
+Show me the commit history for package.json
+What changes were made to the main configuration file in the last 10 commits?
+Who last modified the authentication module?
+```
+
+### find_related
+
+Finds files related to a given file.
+
+**Parameters:**
+- `file_path` (required): The path of the file to find related files for
+- `search_directory` (optional): The directory to search in
+- `max_results` (optional, default: 20): Maximum number of results to return
+- `include_imports` (optional, default: true): Whether to include imports
+- `include_references` (optional, default: true): Whether to include references
+- `include_similar_names` (optional, default: true): Whether to include files with similar names
+- `respect_gitignore` (optional, default: true): Whether to respect .gitignore patterns
+
+**Example Cline Prompts:**
+```
+Find files related to auth.js
+What files import the utils module?
+Show me all components that use the UserContext
+```
+
+### analyze_structure
+
+Analyzes the structure of a project.
+
+**Parameters:**
+- `directory` (optional, default: current directory): The directory to analyze
+- `include_hidden` (optional, default: false): Whether to include hidden files
+- `respect_gitignore` (optional, default: true): Whether to respect .gitignore patterns
+- `max_depth` (optional, default: -1): Maximum recursion depth (-1 for unlimited)
+
+**Example Cline Prompts:**
+```
+Analyze the structure of this project
+Show me the main components of the application
+What's the architecture of this codebase?
+```
+
+### calculate_metrics
+
+Calculates metrics for a project.
+
+**Parameters:**
+- `directory` (optional, default: current directory): The directory to calculate metrics for
+- `include_hidden` (optional, default: false): Whether to include hidden files
+- `respect_gitignore` (optional, default: true): Whether to respect .gitignore patterns
+- `file_extensions` (optional): List of file extensions to include
+
+**Example Cline Prompts:**
+```
+Calculate code metrics for this project
+Which files have the highest complexity?
+Show me statistics about the codebase
+```
+
+## Advanced Usage Examples
+
+### Project Exploration
+
+```
+Show me all JavaScript files in this project that are not in node_modules
+Analyze the structure of my project and show me the main components
+Calculate code metrics for this project and show me the most complex files
+```
+
+### Code Understanding
+
+```
+Find all functions that handle API requests in this project
+Extract all class definitions from the src directory and show me their inheritance relationships
+Search for all instances where we're using async/await in this codebase
+```
+
+### Code Navigation
+
+```
+Show me all files related to the authentication system in this project
+Find all files that import or require the 'utils' module
+Show me where the 'login' function is defined and all places where it's called
+```
+
+### Git Integration
+
+```
+Show me the commit history for the main configuration file
+What files have changed the most in the last 10 commits?
+Show me all changes to the authentication module in the last month
+```
+
+### Advanced Use Cases
+
+```
+Find all React components that use the useEffect hook and show me their dependencies
+Analyze the project structure and identify files with too many dependencies
+Find all places where we're using the deprecated API methods
+```
+
 ## License
 
 MIT
