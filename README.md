@@ -2,6 +2,8 @@
 
 A Python implementation of an MCP (Model Context Protocol) server that allows Cline to read project files while excluding any files captured in `.gitignore`.
 
+Repository: [https://github.com/dckallos/project-reader-py](https://github.com/dckallos/project-reader-py)
+
 ## Features
 
 - List files in a directory while respecting `.gitignore` patterns
